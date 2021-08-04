@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class TestAccount {
@@ -44,12 +45,16 @@ public class TestAccount {
         WebElement logOutButton = driver.findElement(By.linkText("Logout"));
         Assert.assertTrue(logOutButton.isDisplayed());
 
+        driver.close();
+        driver.quit();
+
     }
 
     @Test
     public void Test_Login_Unsuccessfull(){
         String userName = "enrique.briceno.martinez@ucreativa.com";
         String password = "qwerty113";
+        String expectedMessage = "warning: no match for e-mail address and/or password.";
 
         String pathToDriver = Test.class.getResource("/chromedriver.exe").getPath();
         System.setProperty("webdriver.chrome.driver", pathToDriver);
@@ -69,9 +74,11 @@ public class TestAccount {
         driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.cssSelector("[value='Login']")).click();
 
-        WebElement logOutButton = driver.findElement(By.linkText("Logout"));
-        Assert.assertTrue(logOutButton.isDisplayed());
+        WebElement alertMessage = driver.findElement(By.xpath("//div[contains(@class, 'alert-danger')]"));
+        Assert.assertEquals(expectedMessage.toLowerCase(), alertMessage.getText().toLowerCase().trim());
 
+        driver.close();
+        driver.quit();
     }
 
 }
