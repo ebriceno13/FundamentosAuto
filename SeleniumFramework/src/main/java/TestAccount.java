@@ -17,6 +17,7 @@ public class TestAccount {
         System.setProperty("webdriver.chrome.driver", pathToDriver);
 
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get("https://demo.opencart.com");
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
