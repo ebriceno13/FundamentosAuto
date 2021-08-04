@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Account Tests" duration-ms="16183" started-at="2021-08-04T17:51:35 CST" finished-at="2021-08-04T17:51:51 CST">
+    <groups>
+    </groups>
+    <test name="Login Tests" duration-ms="16183" started-at="2021-08-04T17:51:35 CST" finished-at="2021-08-04T17:51:51 CST">
+      <class name="TestAccount">
+        <test-method status="PASS" signature="Test_Login_Successfull()[pri:0, instance:TestAccount@1c7fd41f]" name="Test_Login_Successfull" duration-ms="8735" started-at="2021-08-04T17:51:35 CST" finished-at="2021-08-04T17:51:43 CST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test_Login_Successfull -->
+        <test-method status="PASS" signature="Test_Login_Unsuccessfull()[pri:0, instance:TestAccount@1c7fd41f]" name="Test_Login_Unsuccessfull" duration-ms="7262" started-at="2021-08-04T17:51:43 CST" finished-at="2021-08-04T17:51:51 CST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test_Login_Unsuccessfull -->
+      </class> <!-- TestAccount -->
+    </test> <!-- Login Tests -->
+  </suite> <!-- Account Tests -->
+</testng-results>

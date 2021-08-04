@@ -14,8 +14,8 @@ public class TestAccount {
         String userName = "enrique.briceno.martinez@ucreativa.com";
         String password = "qwerty";
 
-        String pathToDriver = Test.class.getResource("/chromedriver.exe").getPath();
-        System.setProperty("webdriver.chrome.driver", pathToDriver);
+        //String pathToDriver = Test.class.getResource("/chromedriver.exe").getPath();
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -56,8 +56,8 @@ public class TestAccount {
         String password = "qwerty113";
         String expectedMessage = "warning: no match for e-mail address and/or password.";
 
-        String pathToDriver = Test.class.getResource("/chromedriver.exe").getPath();
-        System.setProperty("webdriver.chrome.driver", pathToDriver);
+        //String pathToDriver = Test.class.getResource("/chromedriver.exe").getPath();
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
