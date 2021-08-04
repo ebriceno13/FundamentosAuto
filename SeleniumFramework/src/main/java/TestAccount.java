@@ -8,11 +8,11 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class TestAccount {
-    String userName = "juan.piedra@ucreativa.com";
-    String password = "asdf";
-
     @Test
     public void Test_Login_Successfull(){
+        String userName = "enrique.briceno.martinez@ucreativa.com";
+        String password = "qwerty";
+
         String pathToDriver = Test.class.getResource("/chromedriver.exe").getPath();
         System.setProperty("webdriver.chrome.driver", pathToDriver);
 
@@ -20,7 +20,7 @@ public class TestAccount {
         driver.manage().window().maximize();
         driver.get("https://demo.opencart.com");
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         /*
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -37,9 +37,37 @@ public class TestAccount {
         driver.findElement(By.linkText("Login")).click();
 
         //Llenar formulario
-        driver.findElement(By.name("email")).sendKeys("");
-        driver.findElement(By.name("password")).sendKeys("");
-        driver.findElement(By.name("[value='Login']")).click();
+        driver.findElement(By.name("email")).sendKeys(userName);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.cssSelector("[value='Login']")).click();
+
+        WebElement logOutButton = driver.findElement(By.linkText("Logout"));
+        Assert.assertTrue(logOutButton.isDisplayed());
+
+    }
+
+    @Test
+    public void Test_Login_Unsuccessfull(){
+        String userName = "enrique.briceno.martinez@ucreativa.com";
+        String password = "qwerty113";
+
+        String pathToDriver = Test.class.getResource("/chromedriver.exe").getPath();
+        System.setProperty("webdriver.chrome.driver", pathToDriver);
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://demo.opencart.com");
+
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
+        //Go to login page
+        driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]")).click();
+        driver.findElement(By.linkText("Login")).click();
+
+        //Llenar formulario
+        driver.findElement(By.name("email")).sendKeys(userName);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.cssSelector("[value='Login']")).click();
 
         WebElement logOutButton = driver.findElement(By.linkText("Logout"));
         Assert.assertTrue(logOutButton.isDisplayed());
