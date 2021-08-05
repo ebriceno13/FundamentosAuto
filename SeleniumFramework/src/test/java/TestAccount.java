@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,10 +6,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import javax.management.DescriptorKey;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class TestAccount {
+    @Description("Validate a test login was successful")
     @Test
     public void Test_Login_Successfull(){
         String userName = "enrique.briceno.martinez@ucreativa.com";
@@ -50,6 +53,7 @@ public class TestAccount {
 
     }
 
+    @Description("Validate that the login is working with non valid credentials")
     @Test
     public void Test_Login_Unsuccessfull(){
         String userName = "enrique.briceno.martinez@ucreativa.com";
