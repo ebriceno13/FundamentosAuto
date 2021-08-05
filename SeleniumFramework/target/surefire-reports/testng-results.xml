@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Account Tests" duration-ms="17007" started-at="2021-08-04T18:04:24 CST" finished-at="2021-08-04T18:04:41 CST">
+  <suite name="Account Tests" duration-ms="16989" started-at="2021-08-04T18:17:28 CST" finished-at="2021-08-04T18:17:45 CST">
     <groups>
     </groups>
-    <test name="Login Tests" duration-ms="17007" started-at="2021-08-04T18:04:24 CST" finished-at="2021-08-04T18:04:41 CST">
+    <test name="Login Tests" duration-ms="16989" started-at="2021-08-04T18:17:28 CST" finished-at="2021-08-04T18:17:45 CST">
       <class name="TestAccount">
-        <test-method status="PASS" signature="Test_Login_Successfull()[pri:0, instance:TestAccount@a8e6492]" name="Test_Login_Successfull" duration-ms="9128" started-at="2021-08-04T18:04:24 CST" finished-at="2021-08-04T18:04:33 CST">
+        <test-method status="PASS" signature="Test_Login_Successfull()[pri:0, instance:TestAccount@63192798]" name="Test_Login_Successfull" duration-ms="10291" started-at="2021-08-04T18:17:28 CST" finished-at="2021-08-04T18:17:38 CST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test_Login_Successfull -->
-        <test-method status="PASS" signature="Test_Login_Unsuccessfull()[pri:0, instance:TestAccount@a8e6492]" name="Test_Login_Unsuccessfull" duration-ms="7605" started-at="2021-08-04T18:04:33 CST" finished-at="2021-08-04T18:04:41 CST">
+        <test-method status="PASS" signature="Test_Login_Unsuccessfull()[pri:0, instance:TestAccount@63192798]" name="Test_Login_Unsuccessfull" duration-ms="6466" started-at="2021-08-04T18:17:38 CST" finished-at="2021-08-04T18:17:45 CST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test_Login_Unsuccessfull -->
