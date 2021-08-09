@@ -3,12 +3,12 @@ import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.util.concurrent.TimeUnit;
+
 
 public class TestAccount extends BaseClass{
 
     @Description("Validate a test login was successful")
-    @Test
+    @Test(description = "Test Login Success")
     public void Test_Login_Successfull(){
         String userName = "enrique.briceno.martinez@ucreativa.com";
         String password = "qwerty";
@@ -24,14 +24,10 @@ public class TestAccount extends BaseClass{
 
         WebElement logOutButton = driver.findElement(By.linkText("Logout"));
         Assert.assertTrue(logOutButton.isDisplayed());
-
-        driver.close();
-        driver.quit();
-
     }
 
     @Description("Validate that the login is working with non valid credentials")
-    @Test
+    @Test(description = "Test Login Not Success")
     public void Test_Login_Unsuccessfull(){
         String userName = "enrique.briceno.martinez@ucreativa.com";
         String password = "qwerty113";
@@ -48,9 +44,6 @@ public class TestAccount extends BaseClass{
 
         WebElement alertMessage = driver.findElement(By.xpath("//div[contains(@class, 'alert-danger')]"));
         Assert.assertEquals(expectedMessage.toLowerCase(), alertMessage.getText().toLowerCase().trim());
-
     }
-
-
 
 }

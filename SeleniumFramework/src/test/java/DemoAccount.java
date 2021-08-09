@@ -67,6 +67,7 @@ public class DemoAccount {
 
     }
 
+    @Ignore
     @Test
     public void drag_and_drop() {
 
