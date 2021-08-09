@@ -90,8 +90,4 @@ public class DemoAccount {
         driver.quit();
     }
 
-    @AfterTest
-    public void close(){
-
-    }
 }
