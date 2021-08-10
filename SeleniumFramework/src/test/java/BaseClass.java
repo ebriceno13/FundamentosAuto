@@ -15,17 +15,13 @@ public class BaseClass {
 
     protected WebDriver driver;
 
-    @BeforeTest
-    public void beforeTest(){
-
-        //System.out.println("*Esto corre una sola vez");
-
-    }
 
     @Parameters({"browser"})
     @BeforeMethod
     public void beforeMethod(@Optional("chrome") String browser){
         //System.out.println("**Esto corre una vez por prueba");
+
+
 
         switch (browser){
             case "firefox":
@@ -35,6 +31,7 @@ public class BaseClass {
             case "IE":
                 WebDriverManager.iedriver().setup();
                 driver = new InternetExplorerDriver();
+                break;
             default:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
@@ -43,11 +40,6 @@ public class BaseClass {
         driver.manage().window().maximize();
         driver.get("https://demo.opencart.com");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-    }
-
-    @AfterTest
-    public void afterTest(){
-
     }
 
     @AfterMethod
@@ -64,6 +56,7 @@ public class BaseClass {
 
     @Attachment(value = "screenshot", type = "image/png")
     public byte[] TakeScreenshot() {
+
         return ((TakesScreenshot) this.driver).getScreenshotAs(OutputType.BYTES);
     }
 

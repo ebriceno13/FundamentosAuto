@@ -1,26 +1,36 @@
+import PageObjects.HeaderPage;
+import PageObjects.LoginPage;
+import PageObjects.RegisterPage;
 import io.qameta.allure.Description;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-
+import sun.rmi.runtime.Log;
 
 public class TestAccount extends BaseClass{
 
-    @Description("Validate a test login was successful")
+    @Description("Validate test login was successful")
     @Test(description = "Test Login Success")
-    public void Test_Login_Successfull(){
-        String userName = "enrique.briceno.martinez@ucreativa.com";
-        String password = "qwerty";
+    public void Test_Login_Successful(){
+        HeaderPage headerPage = new HeaderPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        String username = "juan.piedra@ucreativa.com";
+        String password = "asdf";
 
-        //Go to login page
-        driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]")).click();
-        driver.findElement(By.linkText("Login")).click();
+        //Go To Login Page
+        headerPage.clickOnMyAccount();
+        headerPage.clickOnLoginButton();
+
+        /*
+        EJEMPLO DE LISTAS Y WEBELEMENTS SOLOS
+        WebElement WishList = driver.findElement(By.linkText("Wish List"));
+        ArrayList<> WishListList = driver.findElements(By.linkText("Wish List"));
+        */
 
         //Llenar formulario
-        driver.findElement(By.name("email")).sendKeys(userName);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.cssSelector("[value='Login']")).click();
+        loginPage.EnterEmail(username);
+        loginPage.EnterPassword(password);
+        loginPage.ClickSubmitButton();
 
         WebElement logOutButton = driver.findElement(By.linkText("Logout"));
         Assert.assertTrue(logOutButton.isDisplayed());
@@ -28,22 +38,47 @@ public class TestAccount extends BaseClass{
 
     @Description("Validate that the login is working with non valid credentials")
     @Test(description = "Test Login Not Success")
-    public void Test_Login_Unsuccessfull(){
-        String userName = "enrique.briceno.martinez@ucreativa.com";
-        String password = "qwerty113";
+    public void Test_Login_Unsuccessful(){
+
+        /*Test Driven Development
+         * AS A USER I want to be to able to login properly
+         *
+         * GIVEN I am at login page
+         * AND I log in with juan.piedra@ucreativa and asdf
+         * WHEN when user is at dashboard page
+         * THEN logout button is displayed
+         * */
+
+        LoginPage loginPage = new LoginPage(driver);
+        String username = "juan.piedra@ucreativa.com";
+        String password = "asdfasdf";
         String expectedMessage = "warning: no match for e-mail address and/or password.";
 
-        //Go to login page
-        driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]")).click();
-        driver.findElement(By.linkText("Login")).click();
-
-        //Llenar formulario
-        driver.findElement(By.name("email")).sendKeys(userName);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.cssSelector("[value='Login']")).click();
+        loginPage.GoTo();
+        loginPage.login(username, password);
 
         WebElement alertMessage = driver.findElement(By.xpath("//div[contains(@class, 'alert-danger')]"));
         Assert.assertEquals(expectedMessage.toLowerCase(), alertMessage.getText().toLowerCase().trim());
     }
+
+    @Test
+    public void Test_Create_New_Account(){
+        //SETUP
+        String firstName = "Kike";
+        String lastName = "Briceno";
+        String email = "kike@briceno.com";
+        String telephone = "131313";
+        String password = "qwerty";
+        String expectedMessage = "Your Account Has Been Created!";
+        RegisterPage registerPage = new RegisterPage(driver);
+
+        //RUN
+        registerPage.GoTo();
+        registerPage.FillForm(firstName, lastName, email, telephone, password);
+
+        //VALIDATION
+        Assert.assertEquals(registerPage.GetConfirmationMessage(), expectedMessage);
+    }
+
 
 }
