@@ -1,0 +1,3 @@
+PageObjects\RegisterPage.class
+PageObjects\HeaderPage.class
+PageObjects\LoginPage.class
