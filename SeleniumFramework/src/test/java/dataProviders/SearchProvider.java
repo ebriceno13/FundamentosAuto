@@ -1,3 +1,4 @@
+
 package dataProviders;
 
 import com.google.gson.Gson;
@@ -12,7 +13,6 @@ import java.io.FileReader;
 import java.util.List;
 
 public class SearchProvider {
-
     @DataProvider(name = "getSearchData")
     private Object[][] getSearchData(){
         return new Object[][]{

@@ -20,8 +20,8 @@ public class TestAccount extends BaseClass {
         String password = "asdf";
 
         //Go To Login Page
-        headerPage.clickOnMyAccount();
-        headerPage.clickOnLoginButton();
+        headerPage().clickOnMyAccount();
+        headerPage().clickOnLoginButton();
 
         /*
         EJEMPLO DE LISTAS Y WEBELEMENTS SOLOS
@@ -30,9 +30,9 @@ public class TestAccount extends BaseClass {
         */
 
         //Llenar formulario
-        loginPage.EnterEmail(username);
-        loginPage.EnterPassword(password);
-        loginPage.ClickSubmitButton();
+        loginPage().EnterEmail(username);
+        loginPage().EnterPassword(password);
+        loginPage().ClickSubmitButton();
 
         WebElement logOutButton = driver.findElement(By.linkText("Logout"));
         Assert.assertTrue(logOutButton.isDisplayed());
@@ -56,8 +56,8 @@ public class TestAccount extends BaseClass {
         String password = "asdfasdf";
         String expectedMessage = "warning: no match for e-mail address and/or password.";
 
-        loginPage.GoTo();
-        loginPage.login(username, password);
+        loginPage().GoTo();
+        loginPage().login(username, password);
 
         WebElement alertMessage = driver.findElement(By.xpath("//div[contains(@class, 'alert-danger')]"));
         Assert.assertEquals(expectedMessage.toLowerCase(), alertMessage.getText().toLowerCase().trim());
@@ -75,11 +75,11 @@ public class TestAccount extends BaseClass {
         RegisterPage registerPage = new RegisterPage(driver);
 
         //RUN
-        registerPage.GoTo();
-        registerPage.FillForm(firstName, lastName, email, telephone, password);
+        registerPage().GoTo();
+        registerPage().FillForm(firstName, lastName, email, telephone, password);
 
         //VALIDATION
-        Assert.assertEquals(registerPage.GetConfirmationMessage(), expectedMessage);
+        Assert.assertEquals(registerPage().GetConfirmationMessage(), expectedMessage);
     }
 
 

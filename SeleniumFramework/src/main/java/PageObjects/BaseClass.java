@@ -14,15 +14,11 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
-public class BaseClass {
-
-    protected WebDriver driver;
-
+public class BaseClass extends PageObjectHandler {
 
     @Parameters({"browser"})
     @BeforeMethod
-    public void BeforeMethod(@Optional("chrome") String browser) throws MalformedURLException, InterruptedException{
-        //System.out.println("**Esto corre una vez por prueba");
+    public void beforeMethod(@Optional("chrome") String browser) throws MalformedURLException, InterruptedException {
         switch (browser){
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -38,7 +34,7 @@ public class BaseClass {
                 break;
         }
         driver.manage().window().maximize();
-        driver.get("https://demo.opencart.com");
+        driver.get("https://demo.opencart.com/");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
@@ -48,15 +44,13 @@ public class BaseClass {
         driver.close();
         try {
             driver.quit();
-        }catch(WebDriverException exception){
+        } catch (WebDriverException ex){
             System.out.println("El browser ya estaba cerrado");
         }
-
     }
 
     @Attachment(value = "screenshot", type = "image/png")
-    public byte[] TakeScreenshot() {
+    public byte[] TakeScreenshot(){
         return ((TakesScreenshot) this.driver).getScreenshotAs(OutputType.BYTES);
     }
-
 }
