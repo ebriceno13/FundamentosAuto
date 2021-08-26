@@ -10,6 +10,7 @@ public class ProductPage extends BasePage{
     public  By ProductQuantityInputSelector = By.id("input-quantity");
     public By AddButtonSelector = By.id("button-cart");
     public By AlertSuccess = By.cssSelector(".alert-success");
+    public By AddedProductMessageSelector = By.cssSelector(".alert-dismissible");
 
     public ProductPage(WebDriver _driver){
         super(_driver);
@@ -30,6 +31,10 @@ public class ProductPage extends BasePage{
 
     public boolean isAlertSuccessDisplayed(){
         return driver.findElement(AlertSuccess).isDisplayed();
+    }
+
+    public boolean isAddedProductMessageDisplayed(){
+        return driver.findElement(AddedProductMessageSelector).isDisplayed();
     }
 
 }

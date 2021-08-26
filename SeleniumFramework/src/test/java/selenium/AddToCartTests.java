@@ -57,4 +57,17 @@ public class AddToCartTests extends BaseClass {
         headerPage().clickOnCartButton();
         Assert.assertEquals(shoppingCartPage().getAmountOfShoppingCartRows(), 2, "Expected to get 2 rows");
     }
+
+    @Description("Add a purchase order using search to find the product")
+    @Test
+    public void Test_Add_Purchase_From_Search(){
+        searchResultsPage().FillSearchBar("Macbook");
+        searchResultsPage().ClickOnProduct();
+        productPage().SetQuantity(113);
+        productPage().clickAddButton();
+        Assert.assertTrue(productPage().isAddedProductMessageDisplayed());
+        headerPage().clickOnCartButton();
+        shoppingCartPage().clickCheckoutButton();
+        Assert.assertTrue(shoppingCartPage().isProductNotInStockMessageDisplayed());
+    }
 }
