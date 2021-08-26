@@ -12,6 +12,7 @@ public class HeaderPage extends BasePage {
     private By registerButtonLocator = By.linkText("Register");
     private By shoppingCartLocator = By.linkText("Shopping Cart");
     private By yourStoreButtonLocator = By.linkText("Your Store");
+    private By currencyButtonLocator = By.cssSelector(".pull-left .hidden-md");
 
     public HeaderPage(WebDriver _driver){
         super(_driver);
@@ -30,4 +31,5 @@ public class HeaderPage extends BasePage {
         driver.findElement(shoppingCartLocator).click();
     }
     public void clickOnYourStoreButton() {driver.findElement(yourStoreButtonLocator).click();}
+    public void clickCurrencyButton() {driver.findElement(currencyButtonLocator).click();}
 }

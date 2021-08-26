@@ -13,6 +13,7 @@ public class RegisterPage extends BasePage{
     private By PasswordLocator = By.name("password");
     private By ConfirmLocator = By.name("confirm");
     private By ConfirmRegisterMessageLocator = By.xpath("//div[@id='content']/h1");
+    private By DuplicatedEmailMessageLocator = By.cssSelector(".alert-dismissible");
     private By TermsCheckBoxLocator = By.name("agree");
     private By ContinueButtonLocator = By.xpath("//input[@value='Continue']");
 
@@ -40,6 +41,11 @@ public class RegisterPage extends BasePage{
 
     public String GetConfirmationMessage(){
         return driver.findElement(ConfirmRegisterMessageLocator).getText();
+    }
+
+    public String GetDuplicatedEmailMessage(){
+        //System.out.println(driver.findElement(DuplicatedEmailMessageLocator).getText());
+        return driver.findElement(DuplicatedEmailMessageLocator).getText();
     }
 
 

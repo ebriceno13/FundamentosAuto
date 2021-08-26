@@ -1,6 +1,5 @@
 package selenium;
 
-import PageObjects.BaseClass;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;

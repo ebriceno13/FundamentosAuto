@@ -1,10 +1,11 @@
 package selenium;
 
-import PageObjects.BaseClass;
+
 import dataProviders.SearchProvider;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -25,8 +26,8 @@ public class TestSearch extends BaseClass {
         //Assert.assertEquals(results.size(), expectedResult,
         //        String.format("Expected %s results, but got %s",results.size()));
 
-        Assert.assertEquals(searchResultsPage().getResultsCount(), results,
-                "Expecting " + expectedResult + " results, but got " + searchResultsPage().getResultsCount());
+        Assert.assertEquals(getResults(), results,
+                "Expecting " + expectedResult + " results, but got " + getResults());
     }
 
     @Test
@@ -43,12 +44,16 @@ public class TestSearch extends BaseClass {
         //Assert.assertEquals(results.size(), expectedResult,
         //        String.format("Expected %s results, but got %s",results.size()));
 
-        Assert.assertEquals(searchResultsPage().getResultsCount(), expectedResult,
-                "Expecting " + expectedResult + " results, but got " + searchResultsPage().getResultsCount());
-
+        Assert.assertEquals(getResults(), expectedResult,
+                "Expecting " + expectedResult + " results, but got " + getResults());
     }
 
-    @Test(dataProvider = "searchEntries", dataProviderClass = SearchProvider.class)
+    public int getResults(){
+        return driver.findElements(By.cssSelector(".product-thumb")).size();
+    }
+
+
+    @Test(dataProvider = "getSearchDataFromJson", dataProviderClass = SearchProvider.class)
     public void Test_Search_WithData(SearchData testData){
         WebElement searchInput = driver.findElement(By.name("search"));
         searchInput.sendKeys(testData.getSearchCriteria());

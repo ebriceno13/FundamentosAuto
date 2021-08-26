@@ -1,4 +1,4 @@
-package PageObjects;
+package selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
@@ -8,8 +8,10 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.*;
-import selenium.PageObjectHandler;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
@@ -40,9 +42,10 @@ public class BaseClass extends PageObjectHandler {
     @AfterMethod(alwaysRun = true)
     public void AfterMethod(){
         TakeScreenshot();
-        driver.close();
+
         try {
             driver.quit();
+            driver.close();
         } catch (WebDriverException ex){
             System.out.println("El browser ya estaba cerrado");
         }

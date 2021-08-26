@@ -1,12 +1,13 @@
 package selenium;
 
-import PageObjects.*;
-import PageObjects.BaseClass;
+import PageObjects.LoginPage;
+import PageObjects.Utils;
 import dataProviders.UsersProvider;
 import io.qameta.allure.Description;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import pojo.UserAccount;
 
 public class TestAccount extends BaseClass {
@@ -75,7 +76,7 @@ public class TestAccount extends BaseClass {
         //SETUP
         String firstName = "Kike";
         String lastName = "Briceno";
-        String email = Utils.generateRandomEmail();
+        String email = Utils.generateRandomEmail().toLowerCase() + "@test.com";
         String telephone = "131313";
         String password = "qwerty";
         String expectedMessage = "Your Account Has Been Created!";
@@ -91,6 +92,17 @@ public class TestAccount extends BaseClass {
 
     @Test
     public void Test_Duplicated_Email(){
+        String firstName = "Kike";
+        String lastName = "Briceno";
+        String email = "enrique.briceno.martinez@ucreativa.com";
+        String telephone = "131313";
+        String password = "qwerty";
+        String expectedMessage = "Warning: E-Mail Address is already registered!";
+
+        registerPage().GoTo();
+        registerPage().FillForm(firstName, lastName, email, telephone, password);
+
+        Assert.assertEquals(registerPage().GetDuplicatedEmailMessage(), expectedMessage);
 
     }
 
@@ -101,6 +113,4 @@ public class TestAccount extends BaseClass {
      * Fill the form  -> fillTheForm(username, password)
      * Click submit -> clickOnSubmitButton()
      * */
-
-
 }
