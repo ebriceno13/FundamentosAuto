@@ -1,6 +1,9 @@
 package selenium;
 
 import io.qameta.allure.Description;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -70,7 +73,9 @@ public class AddToCartTests extends BaseClass {
         Verificar que el producto no se pueda agregar!
     * */
     public void Test_Add_Purchase_From_Search(){
-        searchResultsPage().FillSearchBar("Macbook");
+        String searchCriteria = "MacBook";
+        WebElement searchInput = driver.findElement(By.name("search"));
+        searchInput.sendKeys(searchCriteria, Keys.ENTER);
         searchResultsPage().ClickOnProduct();
         productPage().SetQuantity(113);
         productPage().clickAddButton();

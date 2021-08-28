@@ -10,12 +10,11 @@ public class SearchResultsPage extends BasePage {
     //elementos
     private By resultsSelector = By.cssSelector(".product-thumb");
     private By noResultsSelector = By.id("content");
-    private By searchBarSelector = By.cssSelector(".input-group");
-    private By searchButtonSelector = By.cssSelector(".input-group-btn");
-    private By productSelector = By.linkText("Macbook");
 
-    public SearchResultsPage(WebDriver driver){
-        super(driver);
+    private By productSelector = By.linkText("MacBook");
+
+    public SearchResultsPage(WebDriver _driver){
+        super(_driver);
     }
 
     public int getResultsCount(){
@@ -24,11 +23,6 @@ public class SearchResultsPage extends BasePage {
 
     public boolean isNoResultsVisible(){
         return driver.findElement(noResultsSelector).getAttribute("innerHTML").contains(ERROR_MESSAGE_NO_RESULTS_DISPLAYED);
-    }
-
-    public void FillSearchBar(String product){
-        driver.findElement(searchBarSelector).sendKeys(product);
-        driver.findElement(searchButtonSelector).click();
     }
 
     public void ClickOnProduct(){

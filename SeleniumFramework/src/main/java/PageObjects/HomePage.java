@@ -6,9 +6,14 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage{
 
+    //private By searchBarSelector = By.cssSelector(".input-group");
+    //private By searchButtonSelector = By.cssSelector(".input-group-btn");
+
     public HomePage(WebDriver _driver){
          super(_driver);
     }
+
+
 
     public String getFirstProductName(){
         return driver.findElement(HomePageLocators.FirstProductTitleSelector).getText();
@@ -26,4 +31,9 @@ public class HomePage extends BasePage{
         HeaderPage headerPage = new HeaderPage(driver);
         headerPage.clickOnYourStoreButton();
     }
+
+    //public void FillSearchBar(String product){
+        //driver.findElement(searchBarSelector).sendKeys(product);
+        //driver.findElement(searchButtonSelector).click();
+    //}
 }
