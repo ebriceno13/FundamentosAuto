@@ -61,8 +61,7 @@ public class AddToCartTests extends BaseClass {
         Assert.assertEquals(shoppingCartPage().getAmountOfShoppingCartRows(), 2, "Expected to get 2 rows");
     }
 
-    @Description("Add a purchase order using search to find the product")
-    @Test
+
     /*
     *   Ir al sitio web.
         Buscar un producto (Macbook)
@@ -72,6 +71,8 @@ public class AddToCartTests extends BaseClass {
         Ir al carrito de compras
         Verificar que el producto no se pueda agregar!
     * */
+    @Description("Add a purchase order using search to find the product")
+    @Test
     public void Test_Add_Purchase_From_Search(){
         String searchCriteria = "MacBook";
         WebElement searchInput = driver.findElement(By.name("search"));

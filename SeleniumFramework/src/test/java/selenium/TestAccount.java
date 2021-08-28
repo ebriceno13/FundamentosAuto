@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import pojo.UserAccount;
 
 public class TestAccount extends BaseClass {
-
     public static final String ERROR_EMAIL_AND_PASSWORD_INVALID_MESSAGE = "warning: no match for e-mail address and/or password.";
 
     //elements
@@ -46,7 +45,6 @@ public class TestAccount extends BaseClass {
     @Description("Validate that the login is working with non valid credentials")
     @Test(description = "Test Login Not Success")
     public void Test_Login_Unsuccessful(){
-
         String username = "juan.piedra@ucreativa.com";
         String password = "asdfasdf";
         String expectedMessage = "warning: no match for e-mail address and/or password.";
@@ -91,6 +89,7 @@ public class TestAccount extends BaseClass {
         Assert.assertEquals(registerPage().GetConfirmationMessage(), expectedMessage);
     }
 
+    @Description("Validate existing email")
     @Test
     public void Test_Duplicated_Email(){
         String firstName = "Kike";
@@ -107,6 +106,8 @@ public class TestAccount extends BaseClass {
 
     }
 
+
+
     /**
      * Open browser
      * Navigate to ...
@@ -114,4 +115,7 @@ public class TestAccount extends BaseClass {
      * Fill the form  -> fillTheForm(username, password)
      * Click submit -> clickOnSubmitButton()
      * */
+
+
+
 }
