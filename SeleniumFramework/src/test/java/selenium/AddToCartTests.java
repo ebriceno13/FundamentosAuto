@@ -62,6 +62,7 @@ public class AddToCartTests extends BaseClass {
     }
 
 
+    //Caso 2 del proyecto
     /*
     *   Ir al sitio web.
         Buscar un producto (Macbook)

@@ -20,6 +20,13 @@
       "dollarsPrice": 602.00,
       "poundsPrice" : 454.10,
       "euroPrice": 518.16
+    },
+    {
+      "product" : "macbook",
+      "imageURL" : "macbook_1-47x47.jpg",
+      "dollarsPrice": 602.00,
+      "poundsPrice" : 454.10,
+      "euroPrice": 518.16
     }
   ]
 }

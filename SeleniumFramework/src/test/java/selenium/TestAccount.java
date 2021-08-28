@@ -69,6 +69,7 @@ public class TestAccount extends BaseClass {
             Assert.assertEquals(ERROR_EMAIL_AND_PASSWORD_INVALID_MESSAGE.toLowerCase(), driver.findElement(alertMessageLocator).getText().toLowerCase().trim());
     }
 
+    //Caso 1 del proyecto
     @Description("Validate a new account with a random email")
     @Test
     public void Test_Create_New_Account(){
