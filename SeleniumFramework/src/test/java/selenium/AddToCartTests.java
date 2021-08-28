@@ -60,6 +60,15 @@ public class AddToCartTests extends BaseClass {
 
     @Description("Add a purchase order using search to find the product")
     @Test
+    /*
+    *   Ir al sitio web.
+        Buscar un producto (Macbook)
+        Hacer click en el producto.
+        Agregar el producto al carrito de compras.
+        Verificar el mensaje de éxito.
+        Ir al carrito de compras
+        Verificar que el producto no se pueda agregar!
+    * */
     public void Test_Add_Purchase_From_Search(){
         searchResultsPage().FillSearchBar("Macbook");
         searchResultsPage().ClickOnProduct();
