@@ -12,6 +12,7 @@ public class SearchResultsPage extends BasePage {
     private By noResultsSelector = By.id("content");
 
     private By productSelector = By.linkText("MacBook");
+    //private By productCurrencySelector = By.linkText("MacBook");
 
     public SearchResultsPage(WebDriver _driver){
         super(_driver);

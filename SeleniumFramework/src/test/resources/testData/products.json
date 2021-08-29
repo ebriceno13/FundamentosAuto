@@ -1,32 +1,32 @@
 {
   "dataSet": [
     {
-      "product" : "macbook",
+      "product" : "MacBook",
       "imageURL" : "macbook_1-47x47.jpg",
       "dollarsPrice": 602.00,
       "poundsPrice" : 454.10,
       "euroPrice": 518.16
     },
     {
-      "product" : "macbook",
-      "imageURL" : "macbook_1-47x47.jpg",
-      "dollarsPrice": 602.00,
-      "poundsPrice" : 454.10,
-      "euroPrice": 518.16
+      "product" : "iPhone",
+      "imageURL" : "iphone_1-228x228.jpg",
+      "dollarsPrice": "123.20",
+      "poundsPrice" : "92.93",
+      "euroPrice": "106.04"
     },
     {
-      "product" : "macbook",
-      "imageURL" : "macbook_1-47x47.jpg",
-      "dollarsPrice": 602.00,
-      "poundsPrice" : 454.10,
-      "euroPrice": 518.16
+      "product" : "Apple Cinema 30\"",
+      "imageURL" : "apple_cinema_30-228x228.jpg",
+      "dollarsPrice": "110.00",
+      "poundsPrice" : "82.98",
+      "euroPrice": "94.68"
     },
     {
-      "product" : "macbook",
-      "imageURL" : "macbook_1-47x47.jpg",
-      "dollarsPrice": 602.00,
-      "poundsPrice" : 454.10,
-      "euroPrice": 518.16
+      "product" : "Samsung Galaxy Tab 10.1",
+      "imageURL" : "samsung_tab_1-228x228.jpg",
+      "dollarsPrice": "241.99",
+      "poundsPrice" : "182.54",
+      "euroPrice": "208.29"
     }
   ]
 }
