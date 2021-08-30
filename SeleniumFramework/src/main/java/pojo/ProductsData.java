@@ -8,12 +8,12 @@ public class ProductsData {
     private String poundPrice;
     private String euroPrice;
 
-    public ProductsData(String productName, String imageURL, String dollarPrice, String poundPrice, String euroPrice) {
+    public ProductsData(String productName, String _imageURL, String _dollarPrice, String _poundPrice, String _euroPrice) {
         this.productName = productName;
-        this.imageURL = imageURL;
-        this.dollarPrice = dollarPrice;
-        this.poundPrice = poundPrice;
-        this.euroPrice = euroPrice;
+        this.imageURL = _imageURL;
+        this.dollarPrice = _dollarPrice;
+        this.poundPrice = _poundPrice;
+        this.euroPrice = _euroPrice;
     }
 
     public String getProductName() {

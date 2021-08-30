@@ -1,5 +1,6 @@
 package selenium;
 
+import com.google.gson.JsonObject;
 import dataProviders.ProductsProvider;
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
@@ -11,14 +12,21 @@ import pojo.ProductsData;
 
 public class TestProductCurrency extends BaseClass{
 /*
+    Caso 3 del Proyecto
     Dado un json con productos y precios en distintas monedas.
     Ir a la página del producto.
     Verificar el precio de cada producto en las distintas monedas.
 */
     @Description("Verificar el precio de un producto en las distintas monedas.")
-    @Test(dataProvider = "getProductsCurrencyData", dataProviderClass = ProductsProvider.class)
-    public void Test_Currency(ProductsData testProducts){
+    @Test(dataProvider = "getProductsDataFromJson", dataProviderClass = ProductsProvider.class)
+    public void Test_Currency(ProductsData testProducts) {
 
+        /*
+        System.out.println(testProducts.getDollarPrice());
+        System.out.println(testProducts.getEuroPrice());
+        System.out.println(testProducts.getPoundPrice());
+        System.out.println(testProducts.getProductName());
+         */
         String productName = testProducts.getProductName();
         String imageURL = testProducts.getImageURL();
         String dollarPrice = testProducts.getDollarPrice();
@@ -28,6 +36,8 @@ public class TestProductCurrency extends BaseClass{
         searchInput.sendKeys(productName, Keys.ENTER);
         WebElement productLink = driver.findElement(By.linkText(productName));
         productLink.click();
+        headerPage().clickCurrencyButton();
+        headerPage().clickDollarCurrencyButton();
         String productDollarPrice = productPage().GetPrice();
         Assert.assertEquals(productDollarPrice, dollarPrice);
         headerPage().clickCurrencyButton();
