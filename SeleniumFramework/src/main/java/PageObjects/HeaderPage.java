@@ -1,7 +1,9 @@
 package PageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class HeaderPage extends BasePage {
 
@@ -12,10 +14,11 @@ public class HeaderPage extends BasePage {
     private By registerButtonLocator = By.linkText("Register");
     private By shoppingCartLocator = By.linkText("Shopping Cart");
     private By yourStoreButtonLocator = By.linkText("Your Store");
-    private By currencyButtonLocator = By.cssSelector(".pull-left .dropdown-toggle");
-    private By selectEuroCurrencyLocator = By.xpath("//*[@id=\"form-currency\"]/div/ul/li[1]/button");
-    private By selectPoundCurrencyLocator = By.xpath("//*[@id=\"form-currency\"]/div/ul/li[2]/button");
-    private By selectDollarCurrencyLocator = By.xpath("//*[@id=\"form-currency\"]/div/ul/li[3]/button");
+    private By currencyButtonLocator = By.cssSelector("#form-currency [data-toggle='dropdown']");
+    private By selectEuroCurrencyLocator = By.cssSelector("[name='EUR']");
+    private By selectPoundCurrencyLocator = By.cssSelector("[name='GBP']");
+    private By selectDollarCurrencyLocator = By.cssSelector("[name='USD']");
+    private By searchBarLocator = By.name("Search");
 
     public HeaderPage(WebDriver _driver){
         super(_driver);
@@ -34,8 +37,12 @@ public class HeaderPage extends BasePage {
         driver.findElement(shoppingCartLocator).click();
     }
     public void clickOnYourStoreButton() {driver.findElement(yourStoreButtonLocator).click();}
-    public void clickCurrencyButton() {driver.findElement(currencyButtonLocator).click();}
-    public void clickEuroCurrencyButton() {driver.findElement(selectEuroCurrencyLocator).click();}
-    public void clickPoundCurrencyButton() {driver.findElement(selectPoundCurrencyLocator).click();}
-    public void clickDollarCurrencyButton() {driver.findElement(selectDollarCurrencyLocator).click();}
+    public void clickCurrencyButton() {driver.findElement(this.currencyButtonLocator).click();}
+    public void clickEuroCurrencyButton() {driver.findElement(this.selectEuroCurrencyLocator).click();}
+    public void clickPoundCurrencyButton() {driver.findElement(this.selectPoundCurrencyLocator).click();}
+    public void clickDollarCurrencyButton() {driver.findElement(this.selectDollarCurrencyLocator).click();}
+    public void fillSearchBar(String productName){
+        WebElement webElement1 = driver.findElement(By.cssSelector("#search input"));
+        webElement1.sendKeys(productName, Keys.ENTER);
+    }
 }
