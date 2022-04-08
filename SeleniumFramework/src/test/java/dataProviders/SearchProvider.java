@@ -30,7 +30,7 @@ public class SearchProvider {
 
     @DataProvider(name = "getSearchDataFromJson")
     private Object[][] getSearchDataFromJson() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/resources/testData/search.json"));
+        JsonElement jsonData = new JsonParser().parse(new FileReader("/src/test/resources/testData/search.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("dataSet");
         List<SearchData> testData = new Gson().fromJson(dataSet, new TypeToken<List<SearchData>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
