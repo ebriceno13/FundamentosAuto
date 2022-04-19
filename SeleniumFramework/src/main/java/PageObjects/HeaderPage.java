@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HeaderPage extends BasePage {
 
@@ -25,10 +26,10 @@ public class HeaderPage extends BasePage {
     }
 
     public void clickOnMyAccount(){
-        driver.findElement(myAccountLinkLocator).click();
+        wait.until(ExpectedConditions.elementToBeClickable(myAccountLinkLocator)).click();
     }
     public void clickOnLoginButton(){
-        driver.findElement(loginButtonLocator).click();
+        wait.until(ExpectedConditions.elementToBeClickable(loginButtonLocator)).click();
     }
     public void clickOnRegisterButton(){
         driver.findElement(registerButtonLocator).click();

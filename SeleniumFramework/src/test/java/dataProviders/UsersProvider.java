@@ -10,6 +10,7 @@ import pojo.UserAccount;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class UsersProvider {
@@ -22,8 +23,8 @@ public class UsersProvider {
     }
 
     @DataProvider(name = "getUsersDataFromJson")
-    private Object[][] getUsersDataFromJson() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/resources/testData/users.json"));
+    private Object[][] getUsersDataFromJson() throws IOException {
+        JsonElement jsonData = new JsonParser().parse(new FileReader(PropertiesFile.pfInstance().getProperty("usersFile")));
         JsonElement dataSet = jsonData.getAsJsonObject().get("dataSet");
         List<UserAccount> testData = new Gson().fromJson(dataSet, new TypeToken<List<UserAccount>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
